@@ -32,4 +32,8 @@ public abstract class Stall implements IReviewed {
     public String getName() {
         return reviewedImpl.getName();
     }
+
+    public void setRating(int rating) {
+        reviewedImpl.setRating(rating);
+    }
 }

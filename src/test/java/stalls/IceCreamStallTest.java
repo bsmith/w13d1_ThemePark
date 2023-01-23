@@ -33,4 +33,10 @@ public class IceCreamStallTest {
     public void hasRating() {
         assertEquals(0, iceCreamStall.getRating());
     }
+
+    @Test
+    public void canSetRating() {
+        iceCreamStall.setRating(3);
+        assertEquals(3, iceCreamStall.getRating());
+    }
 }

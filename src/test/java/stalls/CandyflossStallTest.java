@@ -33,4 +33,10 @@ public class CandyflossStallTest {
     public void hasRating() {
         assertEquals(0, candyflossStall.getRating());
     }
+
+    @Test
+    public void canSetRating() {
+        candyflossStall.setRating(3);
+        assertEquals(3, candyflossStall.getRating());
+    }
 }
