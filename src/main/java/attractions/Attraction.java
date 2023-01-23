@@ -5,7 +5,7 @@ import behaviours.ReviewedImpl;
 
 public abstract class Attraction implements IReviewed {
     private final ReviewedImpl reviewedImpl;
-    private final int visitCount;
+    private int visitCount;
 
     public Attraction(String name, int rating) {
         reviewedImpl = new ReviewedImpl(name);
@@ -25,5 +25,9 @@ public abstract class Attraction implements IReviewed {
     @Override
     public String getName() {
         return reviewedImpl.getName();
+    }
+
+    public void incrementVisitCount() {
+        visitCount++;
     }
 }

@@ -30,6 +30,12 @@ public class RollerCoasterTest {
         assertEquals(0, rollerCoaster.getVisitCount());
     }
 
+    @Test
+    public void canIncrementVisitCount() {
+        rollerCoaster.incrementVisitCount();
+        assertEquals(1, rollerCoaster.getVisitCount());
+    }
+
     /* RollerCoster implements ISecurity and requires a visitor to be over 145cm tall and over 12 years of age */
     @Test
     public void allowsTallAndOldVisitor() {

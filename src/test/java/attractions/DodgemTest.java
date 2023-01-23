@@ -15,7 +15,6 @@ public class DodgemTest {
         dodgems = new Dodgems("Bumper Cars", 5);
     }
 
-
     @Test
     public void hasName() {
         assertEquals("Bumper Cars", dodgems.getName());
@@ -31,6 +30,11 @@ public class DodgemTest {
         assertEquals(0, dodgems.getVisitCount());
     }
 
+    @Test
+    public void canIncrementVisitCount() {
+        dodgems.incrementVisitCount();
+        assertEquals(1, dodgems.getVisitCount());
+    }
 
     @Test
     public void defaultPriceCorrect() {

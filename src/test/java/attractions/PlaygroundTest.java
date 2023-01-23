@@ -30,6 +30,12 @@ public class PlaygroundTest {
     }
 
     @Test
+    public void canIncrementVisitCount() {
+        playground.incrementVisitCount();
+        assertEquals(1, playground.getVisitCount());
+    }
+
+    @Test
     public void allowsUnderFifteens() {
         Visitor visitor = new Visitor(10, 100., 10.);
         assertTrue(playground.isAllowedTo(visitor));
