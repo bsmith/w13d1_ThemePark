@@ -9,9 +9,9 @@ public class ReviewedImpl implements IReviewed {
         this.name = name;
     }
 
-    public void setReview(int rating) {
-        /* clamp ratings to [1..5] */
-        this.rating = Math.max(1, Math.min(rating, 5));
+    public void setRating(int rating) {
+        /* clamp ratings to [1..10] */
+        this.rating = Math.max(1, Math.min(rating, 10));
     }
 
     @Override

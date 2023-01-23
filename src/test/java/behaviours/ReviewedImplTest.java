@@ -20,19 +20,19 @@ public class ReviewedImplTest {
 
     @Test
     public void setReviewInRange() {
-        reviewedImpl.setReview(3);
+        reviewedImpl.setRating(3);
         assertEquals(3, reviewedImpl.getRating());
     }
 
     @Test
     public void setReviewTooLow() {
-        reviewedImpl.setReview(-1);
+        reviewedImpl.setRating(-1);
         assertEquals(1, reviewedImpl.getRating());
     }
 
     @Test
     public void setReviewTooHigh() {
-        reviewedImpl.setReview(6);
-        assertEquals(5, reviewedImpl.getRating());
+        reviewedImpl.setRating(11);
+        assertEquals(10, reviewedImpl.getRating());
     }
 }
