@@ -1,19 +1,18 @@
 package stalls;
 
-public abstract class Stall {
+import behaviours.IReviewed;
+import behaviours.ReviewedImpl;
 
-    private String name;
-    private String ownerName;
-    private ParkingSpot parkingSpot;
+public abstract class Stall implements IReviewed {
+    private final ReviewedImpl reviewedImpl;
+
+    private final String ownerName;
+    private final ParkingSpot parkingSpot;
 
     public Stall(String name, String ownerName, ParkingSpot parkingSpot) {
-        this.name = name;
+        reviewedImpl = new ReviewedImpl(name);
         this.ownerName = ownerName;
         this.parkingSpot = parkingSpot;
-    }
-
-    public String getName() {
-        return name;
     }
 
     public String getOwnerName() {
@@ -22,5 +21,15 @@ public abstract class Stall {
 
     public ParkingSpot getParkingSpot() {
         return parkingSpot;
+    }
+
+    @Override
+    public int getRating() {
+        return reviewedImpl.getRating();
+    }
+
+    @Override
+    public String getName() {
+        return reviewedImpl.getName();
     }
 }
