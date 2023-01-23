@@ -48,8 +48,10 @@ public class ThemePark {
     public List<IReviewed> getAllowedFor(Visitor visitor) {
         List<IReviewed> allowed = new ArrayList<>();
         for (IReviewed reviewed : this.getAllReviewed()) {
-            if (reviewed instanceof ISecurity)
-                if (!((ISecurity)reviewed).isAllowedTo(visitor))
+//            if (reviewed instanceof ISecurity)
+            Optional<ISecurity> securityOptional;
+            if ((securityOptional = reviewed.getSecurity()).isPresent())
+                if (!securityOptional.get().isAllowedTo(visitor))
                     continue;
             allowed.add(reviewed);
         }
