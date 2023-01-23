@@ -4,8 +4,6 @@ import behaviours.ISecurity;
 import behaviours.ITicketed;
 import people.Visitor;
 
-import java.util.Optional;
-
 public class RollerCoaster extends Attraction implements ISecurity, ITicketed {
     private static final double startingPrice = 8.40;
 
@@ -30,7 +28,7 @@ public class RollerCoaster extends Attraction implements ISecurity, ITicketed {
     }
 
     @Override
-    public Optional<ISecurity> getSecurity() {
-        return Optional.of(this);
+    public ISecurity getSecurity() {
+        return this;
     }
 }

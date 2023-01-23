@@ -1,6 +1,5 @@
 import attractions.Attraction;
 import behaviours.IReviewed;
-import behaviours.ISecurity;
 import people.Visitor;
 import stalls.Stall;
 
@@ -49,10 +48,12 @@ public class ThemePark {
         List<IReviewed> allowed = new ArrayList<>();
         for (IReviewed reviewed : this.getAllReviewed()) {
 //            if (reviewed instanceof ISecurity)
-            Optional<ISecurity> securityOptional;
-            if ((securityOptional = reviewed.getSecurity()).isPresent())
-                if (!securityOptional.get().isAllowedTo(visitor))
-                    continue;
+//            Optional<ISecurity securityOptional;
+//            if ((securityOptional = reviewed.getSecurity()).isPresent())
+//                if (!securityOptional.get().isAllowedTo(visitor))
+//                    continue;
+            if (!reviewed.getSecurity().isAllowedTo(visitor))
+                continue;
             allowed.add(reviewed);
         }
         return allowed;

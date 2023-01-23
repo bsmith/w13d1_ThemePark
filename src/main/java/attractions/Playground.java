@@ -3,8 +3,6 @@ package attractions;
 import behaviours.ISecurity;
 import people.Visitor;
 
-import java.util.Optional;
-
 public class Playground extends Attraction implements ISecurity {
 
     public Playground(String name, int rating) {
@@ -18,7 +16,7 @@ public class Playground extends Attraction implements ISecurity {
     }
 
     @Override
-    public Optional<ISecurity> getSecurity() {
-        return Optional.of(this);
+    public ISecurity getSecurity() {
+        return this;
     }
 }

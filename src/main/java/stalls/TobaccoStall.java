@@ -3,8 +3,6 @@ package stalls;
 import behaviours.ISecurity;
 import people.Visitor;
 
-import java.util.Optional;
-
 public class TobaccoStall extends Stall implements ISecurity {
 
     public TobaccoStall(String name, String ownerName, ParkingSpot parkingSpot) {
@@ -18,7 +16,7 @@ public class TobaccoStall extends Stall implements ISecurity {
     }
 
     @Override
-    public Optional<ISecurity> getSecurity() {
-        return Optional.of(this);
+    public ISecurity getSecurity() {
+        return this;
     }
 }
