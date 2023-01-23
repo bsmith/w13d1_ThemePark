@@ -10,7 +10,7 @@ public class ParkTest {
     Park park;
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         park = new Park("Leafy Meadows", 9);
     }
 

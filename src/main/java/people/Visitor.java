@@ -2,9 +2,9 @@ package people;
 
 public class Visitor {
 
-    private int age;
-    private double height;
-    private double money;
+    private final int age;
+    private final double height;
+    private final double money;
 
     public Visitor(int age, double height, double money) {
         this.age = age;

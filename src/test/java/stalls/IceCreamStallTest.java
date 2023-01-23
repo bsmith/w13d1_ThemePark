@@ -10,7 +10,7 @@ public class IceCreamStallTest {
     IceCreamStall iceCreamStall;
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         iceCreamStall = new IceCreamStall("Dream Cones", "Vanilla Ice", ParkingSpot.A4);
     }
 

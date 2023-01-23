@@ -10,7 +10,7 @@ public class PlaygroundTest {
     Playground playground;
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         playground = new Playground("Fun Zone", 7);
     }
 

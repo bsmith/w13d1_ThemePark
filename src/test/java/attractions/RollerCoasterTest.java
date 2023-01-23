@@ -6,7 +6,7 @@ import people.Visitor;
 
 import static org.junit.Assert.*;
 
-public class RollercoasterTest {
+public class RollerCoasterTest {
 
     RollerCoaster rollerCoaster;
 
@@ -30,7 +30,7 @@ public class RollercoasterTest {
         assertEquals(0, rollerCoaster.getVisitCount());
     }
 
-    /* Rollercoster implements ISecurity and requires a visitor to be over 145cm tall and over 12 years of age */
+    /* RollerCoster implements ISecurity and requires a visitor to be over 145cm tall and over 12 years of age */
     @Test
     public void allowsTallAndOldVisitor() {
         Visitor visitor = new Visitor(13, 146., 10.);
