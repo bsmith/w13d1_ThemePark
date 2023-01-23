@@ -1,4 +1,5 @@
 import attractions.*;
+import behaviours.IReviewed;
 import org.junit.Before;
 import org.junit.Test;
 import people.Visitor;
@@ -6,6 +7,9 @@ import stalls.CandyflossStall;
 import stalls.IceCreamStall;
 import stalls.ParkingSpot;
 import stalls.TobaccoStall;
+
+import java.util.List;
+import java.util.Map;
 
 import static org.junit.Assert.*;
 
@@ -68,5 +72,39 @@ public class ThemeParkTest {
         themePark.visitAttraction(visitor, park);
         assertEquals(1, park.getVisitCount());
         assertEquals(park, visitor.getVisitedAttractions().get(0));
+    }
+
+    @Test
+    public void canGetAllReviews() {
+        themePark.addAttraction(park);
+        themePark.addStall(iceCreamStall);
+        tobaccoStall.setRating(4);
+        themePark.addStall(tobaccoStall);
+        Map<String, Integer> reviews = themePark.getReviews();
+        assertEquals(2, reviews.size());
+        assertEquals((Integer)9, reviews.get("Leafy Meadows"));
+        assertEquals((Integer)4, reviews.get("Jacks Drum"));
+    }
+
+    @Test
+    public void canGetAllowedFor() {
+        Visitor visitor = new Visitor(12, 150., 20.);
+        themePark.addAttraction(dodgems);
+        themePark.addAttraction(park);
+        themePark.addAttraction(playground);
+        themePark.addAttraction(rollerCoaster);
+        themePark.addStall(candyflossStall);
+        themePark.addStall(iceCreamStall);
+        themePark.addStall(tobaccoStall);
+        List<IReviewed> allowed = themePark.getAllowedFor(visitor);
+        for (IReviewed reviewed : allowed) {
+            System.out.println(reviewed);
+        }
+        assertEquals(5, allowed.size());
+        assertTrue(allowed.contains(dodgems));
+        assertTrue(allowed.contains(park));
+        assertTrue(allowed.contains(playground));
+        assertTrue(allowed.contains(candyflossStall));
+        assertTrue(allowed.contains(iceCreamStall));
     }
 }

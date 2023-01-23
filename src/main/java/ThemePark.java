@@ -1,12 +1,10 @@
 import attractions.Attraction;
 import behaviours.IReviewed;
+import behaviours.ISecurity;
 import people.Visitor;
 import stalls.Stall;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public class ThemePark {
     private final Set<Attraction> attractions;
@@ -35,5 +33,26 @@ public class ThemePark {
     public void visitAttraction(Visitor visitor, Attraction attraction) {
         visitor.visitAttraction(attraction);
         attraction.incrementVisitCount();
+    }
+
+    public Map<String, Integer> getReviews() {
+        Map<String, Integer> reviews = new HashMap<>();
+        for (IReviewed reviewed : this.getAllReviewed()) {
+            int rating = reviewed.getRating();
+            if (rating != 0)
+                reviews.put(reviewed.getName(), rating);
+        }
+        return reviews;
+    }
+
+    public List<IReviewed> getAllowedFor(Visitor visitor) {
+        List<IReviewed> allowed = new ArrayList<>();
+        for (IReviewed reviewed : this.getAllReviewed()) {
+            if (reviewed instanceof ISecurity)
+                if (!((ISecurity)reviewed).isAllowedTo(visitor))
+                    continue;
+            allowed.add(reviewed);
+        }
+        return allowed;
     }
 }
