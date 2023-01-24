@@ -1,5 +1,6 @@
 import attractions.Attraction;
-import behaviours.IReviewed;
+import behaviours.IRated;
+import org.jetbrains.annotations.NotNull;
 import people.Visitor;
 import stalls.Stall;
 
@@ -22,21 +23,21 @@ public class ThemePark {
         stalls.add(stall);
     }
 
-    public List<IReviewed> getAllReviewed() {
-        ArrayList<IReviewed> reviewedThings = new ArrayList<>();
+    public List<IRated> getAllReviewed() {
+        ArrayList<IRated> reviewedThings = new ArrayList<>();
         reviewedThings.addAll(attractions);
         reviewedThings.addAll(stalls);
         return reviewedThings;
     }
 
-    public void visitAttraction(Visitor visitor, Attraction attraction) {
+    public void visitAttraction(@NotNull Visitor visitor, Attraction attraction) {
         visitor.visitAttraction(attraction);
         attraction.incrementVisitCount();
     }
 
     public Map<String, Integer> getReviews() {
         Map<String, Integer> reviews = new HashMap<>();
-        for (IReviewed reviewed : this.getAllReviewed()) {
+        for (IRated reviewed : this.getAllReviewed()) {
             int rating = reviewed.getRating();
             if (rating != 0)
                 reviews.put(reviewed.getName(), rating);
@@ -44,17 +45,20 @@ public class ThemePark {
         return reviews;
     }
 
-    /* Alternative design?  Visitor pattern... */
+    /* Alternative design?  Visitor pattern... (The name is confusing in this program! Too many visitors!) */
     /* Add visit(ThemeParkVisitor) to IReviewed.  Then each IReviewed calls ThemeParkVisitor.visitWithoutSecurity(IReviewed) or ThemeParkVisitor.visitWithSecurity(ISecurity, IReviewed) */
     /* The solution below is very similar in some ways, and simpler! */
-    public List<IReviewed> getAllowedFor(Visitor visitor) {
-        List<IReviewed> allowed = new ArrayList<>();
-        for (IReviewed reviewed : this.getAllReviewed()) {
+    /* The simplest thing would be to introduce IVisitable implementing IReviewed and ISecurity, with a default ISecurity implementation */
+    public List<IRated> getAllowedFor(Visitor visitor) {
+        List<IRated> allowed = new ArrayList<>();
+        for (IRated reviewed : this.getAllReviewed()) {
 //            if (reviewed instanceof ISecurity)
+//                if (!(((ISecurity)reviewed).isAllowed(visitor))
 //            Optional<ISecurity securityOptional;
 //            if ((securityOptional = reviewed.getSecurity()).isPresent())
 //                if (!securityOptional.get().isAllowedTo(visitor))
 //                    continue;
+            System.out.println("Security: " + reviewed.getSecurity());
             if (!reviewed.getSecurity().isAllowedTo(visitor))
                 continue;
             allowed.add(reviewed);

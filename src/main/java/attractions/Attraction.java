@@ -1,14 +1,14 @@
 package attractions;
 
-import behaviours.IReviewed;
-import behaviours.ReviewedImpl;
+import behaviours.IRated;
+import behaviours.RatedImpl;
 
-public abstract class Attraction implements IReviewed {
-    private final ReviewedImpl reviewedImpl;
+public abstract class Attraction implements IRated {
+    private final RatedImpl reviewedImpl;
     private int visitCount;
 
     public Attraction(String name, int rating) {
-        reviewedImpl = new ReviewedImpl(name);
+        reviewedImpl = new RatedImpl(name);
         reviewedImpl.setRating(rating);
         this.visitCount = 0;
     }

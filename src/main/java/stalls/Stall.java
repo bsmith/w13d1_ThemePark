@@ -1,16 +1,16 @@
 package stalls;
 
-import behaviours.IReviewed;
-import behaviours.ReviewedImpl;
+import behaviours.IRated;
+import behaviours.RatedImpl;
 
-public abstract class Stall implements IReviewed {
-    private final ReviewedImpl reviewedImpl;
+public abstract class Stall implements IRated {
+    private final RatedImpl reviewedImpl;
 
     private final String ownerName;
     private final ParkingSpot parkingSpot;
 
     public Stall(String name, String ownerName, ParkingSpot parkingSpot) {
-        reviewedImpl = new ReviewedImpl(name);
+        reviewedImpl = new RatedImpl(name);
         this.ownerName = ownerName;
         this.parkingSpot = parkingSpot;
     }

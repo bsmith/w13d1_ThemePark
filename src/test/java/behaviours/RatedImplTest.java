@@ -5,12 +5,12 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 
-public class ReviewedImplTest {
-    private ReviewedImpl reviewedImpl;
+public class RatedImplTest {
+    private RatedImpl reviewedImpl;
 
     @Before
     public void setUp() {
-        reviewedImpl = new ReviewedImpl("Review Stall");
+        reviewedImpl = new RatedImpl("Review Stall");
     }
 
     @Test

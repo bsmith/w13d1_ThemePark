@@ -1,6 +1,7 @@
 package stalls;
 
 import behaviours.ISecurity;
+import org.jetbrains.annotations.NotNull;
 import people.Visitor;
 
 public class TobaccoStall extends Stall implements ISecurity {
@@ -10,7 +11,7 @@ public class TobaccoStall extends Stall implements ISecurity {
     }
 
     @Override
-    public boolean isAllowedTo(Visitor visitor) {
+    public boolean isAllowedTo(@NotNull Visitor visitor) {
         /* Age restriction: 18 and above */
         return visitor.getAge() >= 18;
     }

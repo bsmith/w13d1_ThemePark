@@ -11,7 +11,7 @@ public class VisitorTest {
 
     @Before
     public void before(){
-        visitor = new Visitor(14, 1.2, 40.0);
+        visitor = new Visitor(14, 120, 40.0);
     }
 
     @Test
@@ -21,7 +21,7 @@ public class VisitorTest {
 
     @Test
     public void hasHeight() {
-        assertEquals(1.2, visitor.getHeight(), 0.1);
+        assertEquals(120, visitor.getHeight(), 0.1);
     }
 
     @Test

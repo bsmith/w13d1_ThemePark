@@ -33,6 +33,8 @@ public class Visitor {
         return money;
     }
 
+    /* This is where we could be doing something with ISecurity and ITicketed?
+    * But it's not really the responsibility of the Visitor? */
     public void visitAttraction(Attraction attraction) {
         visitedAttractions.add(attraction);
     }

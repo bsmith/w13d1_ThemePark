@@ -1,8 +1,6 @@
 package behaviours;
 
-import people.Visitor;
-
-public interface IReviewed {
+public interface IRated {
     int getRating();
     String getName();
 

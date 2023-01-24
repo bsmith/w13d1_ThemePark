@@ -1,10 +1,11 @@
 package attractions;
 
 import behaviours.ITicketed;
+import org.jetbrains.annotations.NotNull;
 import people.Visitor;
 
 public class Dodgems extends Attraction implements ITicketed {
-    private static final double defaultPrice = 4.50;
+    private static final double DEFAULT_PRICE = 4.50;
 
     public Dodgems(String name, int rating) {
         super(name, rating);
@@ -12,11 +13,11 @@ public class Dodgems extends Attraction implements ITicketed {
 
     @Override
     public double defaultPrice() {
-        return defaultPrice;
+        return DEFAULT_PRICE;
     }
 
     @Override
-    public double priceFor(Visitor visitor) {
+    public double priceFor(@NotNull Visitor visitor) {
         return defaultPrice() * (visitor.getAge() < 12 ? .5 : 1.);
     }
 }

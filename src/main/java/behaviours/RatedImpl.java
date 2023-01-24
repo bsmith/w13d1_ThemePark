@@ -1,10 +1,12 @@
 package behaviours;
 
-public class ReviewedImpl implements IReviewed {
+/* This isn't really meant to be used on its own as an IReviewed! */
+/* If we were using COM, we could just return this delegate directly from QueryInterface */
+public class RatedImpl implements IRated {
     private int rating;
     private final String name;
 
-    public ReviewedImpl(String name) {
+    public RatedImpl(String name) {
         this.rating = 0;
         this.name = name;
     }

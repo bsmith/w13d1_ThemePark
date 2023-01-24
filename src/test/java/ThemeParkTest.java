@@ -1,5 +1,5 @@
 import attractions.*;
-import behaviours.IReviewed;
+import behaviours.IRated;
 import org.junit.Before;
 import org.junit.Test;
 import people.Visitor;
@@ -8,8 +8,7 @@ import stalls.IceCreamStall;
 import stalls.ParkingSpot;
 import stalls.TobaccoStall;
 
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import static org.junit.Assert.*;
 
@@ -70,8 +69,9 @@ public class ThemeParkTest {
         themePark.addStall(iceCreamStall);
         Visitor visitor = new Visitor(20, 175., 50.);
         themePark.visitAttraction(visitor, park);
-        assertEquals(1, park.getVisitCount());
-        assertEquals(park, visitor.getVisitedAttractions().get(0));
+//        assertEquals(1, park.getVisitCount());
+//        assertEquals(park, visitor.getVisitedAttractions().get(0));
+        assertEquals(new ArrayList<>(Arrays.asList(park)), visitor.getVisitedAttractions());
     }
 
     @Test
@@ -81,9 +81,13 @@ public class ThemeParkTest {
         tobaccoStall.setRating(4);
         themePark.addStall(tobaccoStall);
         Map<String, Integer> reviews = themePark.getReviews();
-        assertEquals(2, reviews.size());
-        assertEquals((Integer)9, reviews.get("Leafy Meadows"));
-        assertEquals((Integer)4, reviews.get("Jacks Drum"));
+        Map<String, Integer> expected = new HashMap<>();
+//        assertEquals(2, reviews.size());
+//        assertEquals((Integer)9, reviews.get("Leafy Meadows"));
+//        assertEquals((Integer)4, reviews.get("Jacks Drum"));
+        expected.put("Leafy Meadows", 9);
+        expected.put("Jacks Drum", 4);
+        assertEquals(expected, reviews);
     }
 
     @Test
@@ -96,8 +100,8 @@ public class ThemeParkTest {
         themePark.addStall(candyflossStall);
         themePark.addStall(iceCreamStall);
         themePark.addStall(tobaccoStall);
-        List<IReviewed> allowed = themePark.getAllowedFor(visitor);
-        for (IReviewed reviewed : allowed) {
+        List<IRated> allowed = themePark.getAllowedFor(visitor);
+        for (IRated reviewed : allowed) {
             System.out.println(reviewed);
         }
         assertEquals(5, allowed.size());

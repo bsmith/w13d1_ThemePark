@@ -1,6 +1,7 @@
 package attractions;
 
 import behaviours.ISecurity;
+import org.jetbrains.annotations.NotNull;
 import people.Visitor;
 
 public class Playground extends Attraction implements ISecurity {
@@ -10,7 +11,7 @@ public class Playground extends Attraction implements ISecurity {
     }
 
     @Override
-    public boolean isAllowedTo(Visitor visitor) {
+    public boolean isAllowedTo(@NotNull Visitor visitor) {
         /* maximum age of 15 */
         return visitor.getAge() <= 15;
     }
