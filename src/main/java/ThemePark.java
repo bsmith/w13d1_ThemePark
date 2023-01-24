@@ -44,6 +44,9 @@ public class ThemePark {
         return reviews;
     }
 
+    /* Alternative design?  Visitor pattern... */
+    /* Add visit(ThemeParkVisitor) to IReviewed.  Then each IReviewed calls ThemeParkVisitor.visitWithoutSecurity(IReviewed) or ThemeParkVisitor.visitWithSecurity(ISecurity, IReviewed) */
+    /* The solution below is very similar in some ways, and simpler! */
     public List<IReviewed> getAllowedFor(Visitor visitor) {
         List<IReviewed> allowed = new ArrayList<>();
         for (IReviewed reviewed : this.getAllReviewed()) {
